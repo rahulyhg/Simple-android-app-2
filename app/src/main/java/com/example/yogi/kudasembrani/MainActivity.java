@@ -1,7 +1,11 @@
 package com.example.yogi.kudasembrani;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+//    private List<Sembrani> komunikasiList = new ArrayList<>();
+//    private RecyclerView recyclerView;
+//    private SembraniAdapter mAdapter;
+    private int[] tabIcons = {
+            R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher_round
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,38 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
+
+
+//        mAdapter = new SembraniAdapter(this, komunikasiList);
+//        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+//        recyclerView.setAdapter(mAdapter);
+//
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//
+//        prepareSembraniData();
+    }
+
+//    private void prepareSembraniData() {
+//        Sembrani sembrani = new Sembrani(R.mipmap.ic_launcher_round, "Action & Adventure", "2015");
+//        komunikasiList.add(sembrani);
+//
+//        sembrani = new Sembrani(R.mipmap.ic_launcher, "Animation", "2016");
+//        komunikasiList.add(sembrani);
+//
+//        sembrani = new Sembrani(R.mipmap.ic_launcher, "Kids", "2017");
+//        komunikasiList.add(sembrani);
+//
+//        sembrani = new Sembrani(R.mipmap.ic_launcher, "Family", "2018");
+//        komunikasiList.add(sembrani);
+//        mAdapter.notifyDataSetChanged();
+//    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
 
     private void setupViewPager(ViewPager viewPager){
@@ -78,5 +121,4 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
 }
